@@ -39,6 +39,10 @@
         background: #0000005e;
     }
 
+    button.buy-product-button{
+        margin-bottom: 10px;
+    }
+
     .input-number {
         width: 80px;
         padding: 0 12px;
@@ -532,7 +536,7 @@
                     if (parseInt(this.value) == 0) {
                         this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
                     }
-                    updateSelectedProduct(title, newQuantity);
+                    updateSelectedProduct(title, newQuantity, price);
                     calculateTotalPrice();
                 });
 
