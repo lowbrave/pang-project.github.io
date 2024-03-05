@@ -72,7 +72,7 @@ if (bookformContainer) {
                 const searchText = searchInput.value.toLowerCase();
                 searchResults.innerHTML = ''; // Clear previous search results
                 if (searchText !== '') {
-                    fetch('../package.html')
+                    fetch('package.html')
                         .then(response => response.text())
                         .then(html => {
                             const parser = new DOMParser();
