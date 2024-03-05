@@ -238,21 +238,31 @@ if (document.readyState === "complete" || document.readyState === "interactive")
 
     // Append the snackbar container element to the body
     document.body.appendChild(snackbarContainer);
+    const jsonData = [
+        {
+            "username": "user1",
+            "password": "123456",
+            "email": "user1@example.com",
+            "phone": "12345678"
+        },
+        {
+            "username": "user2",
+            "password": "123456",
+            "email": "user2@example.com",
+            "phone": "23456789"
+        },
+        {
+            "username": "user3",
+            "password": "123456",
+            "email": "user3@example.com",
+            "phone": "34567890"
+        }
+    ];
+
     if (!localStorage.getItem('user')) {
-        fetch('../json/user.json')
-            .then(response => response.json())
-            .then(data => {
-                localStorage.setItem('user', JSON.stringify(data));
-                // Call a function or perform any additional operations with the data
-                console.log('User data stored in localStorage:', data);
-            })
-            .catch(error => {
-                // Handle errors
-                console.error('Error fetching user.json:', error);
-            });
+        localStorage.setItem('user', JSON.stringify(jsonData));
+        console.log('User data stored in localStorage:', jsonData);
     } else {
-        // Data is already present in localStorage
-        // Retrieve the data and use it as needed
         const userData = JSON.parse(localStorage.getItem('user'));
         console.log('User data retrieved from localStorage:', userData);
         // Call a function or perform any additional operations with the data
