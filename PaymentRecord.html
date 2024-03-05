@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>TRAVELER - Free Travel Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .cart-product-image {
+            width: 100px;
+            /* Adjust as needed */
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div id="header-container"></div>
+    <!-- Topbar End -->
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Payment history</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Payment history</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Payment Record Start -->
+    <div class="container p-2 bg-light shadow rounded">
+        <div class="container mt-2">
+            <h2>Payment History</h2>
+            <div id="accordionContainer"></div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        var selectedProducts = [];
+        $(document).ready(function () {
+            var total_price = 0;
+            var storedData = localStorage.getItem('history_payment');
+            if (!storedData) {
+                $("#pay-list").html(`
+                    <tr>
+                        <td colspan=5 class="text-center">No Data Can be Display.</td>
+                    </tr>
+                `)
+                return
+            }
+
+            var selectedProducts = JSON.parse(storedData);
+
+            var accordionHtml = '<div class="accordion" id="accordionExample">';
+
+            for (var i = 0; i < selectedProducts.length; i++) {
+                var transaction = selectedProducts[i];
+                var transactionId = i+1;
+                var paymentHtml = `
+                    <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading${i}">
+                        <button class="accordion-button" style="background-color: var(--primary);" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapse${i}" aria-expanded="true"
+                        aria-controls="collapse${i}">
+                        Payment Record ${i+1}
+                        </button>
+                    </h2>
+                    <div id="collapse${i}" class="accordion-collapse collapse show" aria-labelledby="heading${i}"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body" style="width:100%;overflow:scroll;">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Package Name</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Payment Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            ${generateProductRows(transaction, transactionId, transaction.timestamp)}
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                    </div>
+                `;
+                accordionHtml += paymentHtml;
+            }
+
+            accordionHtml += '</div>';
+
+            // Append the accordion HTML to a container element on the page
+            var accordionContainer = document.getElementById('accordionContainer');
+            accordionContainer.innerHTML = accordionHtml;
+
+            function generateProductRows(transaction, transactionId, time) {
+                var rowsHtml = '';
+                var total_price = 0;
+                if (Array.isArray(transaction.products)) {
+                    var products = transaction.products;
+                    for (var j = 0; j < products.length; j++) {
+                        var product = products[j];
+                        var title = product.title;
+                        var quantity = product.quantity;
+                        var price = product.price;
+                        var paymentDate = getFormattedDate(time);
+                        total_price += parseInt(price * quantity)
+                        var rowHtml = `
+                            <tr>
+                            <td style="vertical-align: middle;">
+                                <div style="display: flex;align-items: center;justify-content: flex-start;">
+                                <img src="img/destination-${Math.floor(Math.random() * 6) + 1}.jpg" alt="Package one" class="cart-product-image">
+                                <span>${title}</span>
+                                </div>
+                            </td>
+                            <td style="vertical-align: middle;">HK$${price} x ${quantity}<br>= HK$${price * quantity}</td>
+                            <td style="vertical-align: middle;">${paymentDate}</td>
+                            </tr>
+                        `;
+
+                        rowsHtml += rowHtml;
+                    }
+                    var totalRow = `
+                    <tr>
+                            <td colspan = 5 style="vertical-align: middle;text-align:right;">Total Price: <strong style="font-size: x-large;">HK$${total_price}</strong></td>
+                    `
+                    rowsHtml += totalRow;
+                }
+                return rowsHtml;
+            }
+            function getFormattedDate(timestamp) {
+                var date = new Date(timestamp);
+                var options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+                return date.toLocaleDateString('en-US', options);
+            }
+            // Add the total price row with colspan
+            var totalRow = $('<tr></tr>');
+            var totalCell = $('<td></td>').attr('colspan', '3').css('text-align', 'right').html(`Total Price: <strong style="font-size: x-large;">HK$${total_price}</strong>`);
+            totalRow.append(totalCell);
+            $("#pay-list").append(totalRow);
+        });
+    </script>
+
+    <!-- Footer Start -->
+    <div id="footer-container"></div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

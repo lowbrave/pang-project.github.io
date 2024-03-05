@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>TRAVELER - Free Travel Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<style>
+    span.input-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #0000005e;
+    }
+
+    .input-number {
+        width: 80px;
+        padding: 0 12px;
+        vertical-align: top;
+        text-align: center;
+        outline: none;
+    }
+
+    .input-number,
+    .input-number-decrement,
+    .input-number-increment {
+        border: 1px solid #ccc;
+        height: 40px;
+        user-select: none;
+        background: var(--primary);
+    }
+
+    .input-number-decrement,
+    .input-number-increment {
+        display: inline-block;
+        width: 30px;
+        line-height: 38px;
+        color: #444;
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .input-number-decrement:active,
+    .input-number-increment:active {
+        background: #ddd;
+    }
+
+    .input-number-decrement {
+        border-right: none;
+        border-radius: 4px 0 0 4px;
+        color: var(--secondary);
+    }
+
+    .input-number-increment {
+        border-left: none;
+        border-radius: 0 4px 4px 0;
+        color: var(--secondary);
+    }
+
+    span.total-cart {
+        font-weight: 1000;
+        font-size: x-large;
+    }
+
+    .grand-total {
+        text-align: right;
+    }
+</style>
+
+<body>
+    <!-- Topbar Start -->
+    <div id="header-container"></div>
+    <!-- Topbar End -->
+
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Search</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Search</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Booking Start -->
+    <div id="bookform-container"></div>
+    <!-- Booking End -->
+
+
+    <!-- Packages Start -->
+    <div class="container-fluid">
+        <div class="container pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Packages</h6>
+                <h1>Pefect Tour Packages</h1>
+            </div>
+            <div class="d-flex justify-content-center align-items-center p-2">
+                <button type="button" id="show_cart" class="btn btn-primary mb-2 my-2 my-sm-0 mr-2" data-toggle="modal"
+                    data-target="#staticBackdrop">
+                    <i class="fas fa-shopping-cart marginright total-count"></i>
+                </button>
+                <button type="button" class="btn btn-danger mb-2 my-2 my-sm-0 clear-cart">
+                    <i class="fas fa-broom marginright">Clear Cart</i>
+                </button>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="img/package-1.jpg" alt="">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Japan</small>
+                                <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>5 days</small>
+                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2-4 Person</small>
+                            </div>
+                            <a class="h5 text-decoration-none package-title">Osaka</a>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.9 <small>(100)</small>
+                                    </h6>
+                                    <h5 class="m-0 package-price">$6800</h5>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-block buy-product-btn">Add to Cart</button>
+                            <button class="btn btn-secondary btn-block view-more">Know More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="img/package-2.jpg" alt="">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Korea</small>
+                                <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>5 days</small>
+                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2-4 Person</small>
+                            </div>
+                            <a class="h5 text-decoration-none package-title">Korea culture and foodie</a>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.6 <small>(85)</small>
+                                    </h6>
+                                    <h5 class="m-0 package-price">$5000</h5>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-block buy-product-btn">Add to Cart</button>
+                            <button class="btn btn-secondary btn-block view-more">Know More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="img/package-3.jpg" alt="">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Taiwan</small>
+                                <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>4 days</small>
+                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small>
+                            </div>
+                            <a class="h5 text-decoration-none package-title">Taiwan Goodview</a>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(78)</small>
+                                    </h6>
+                                    <h5 class="m-0 package-price">$3000</h5>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-block buy-product-btn">Add to Cart</button>
+                            <button class="btn btn-secondary btn-block view-more">Know More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="img/package-4.jpg" alt="">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Macau</small>
+                                <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>2 days</small>
+                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2-4 Person</small>
+                            </div>
+                            <a class="h5 text-decoration-none package-title">Explore Las Vegas of China</a>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(50)</small>
+                                    </h6>
+                                    <h5 class="m-0 package-price">$1500</h5>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-block buy-product-btn">Add to Cart</button>
+                            <button class="btn btn-secondary btn-block view-more">Know More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="img/package-5.jpg" alt="">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Japan</small>
+                                <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>1 days</small>
+                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2-4 Person</small>
+                            </div>
+                            <a class="h5 text-decoration-none package-title">Osaka Universal Studios Japan Plan</a>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>5 <small>(150)</small>
+                                    </h6>
+                                    <h5 class="m-0 package-price">$1600</h5>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-block buy-product-btn">Add to Cart</button>
+                            <button class="btn btn-secondary btn-block view-more">Know More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="img/package-6.jpg" alt="">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i
+                                        class="fa fa-map-marker-alt text-primary mr-2"></i>Thailand</small>
+                                <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small>
+                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small>
+                            </div>
+                            <a class="h5 text-decoration-none package-title">Discover amazing places of the world with
+                                us</a>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small>
+                                    </h6>
+                                    <h5 class="m-0 package-price">$350</h5>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-block buy-product-btn">Add to Cart</button>
+                            <button class="btn btn-secondary btn-block view-more">Know More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Packages End -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Your Cart</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="show-cart table">
+
+                    </table>
+                    <div class="grand-total">Total price: HK$<span class="total-cart"></span></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="payment_btn">Process to Payment</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <!-- <button type="button" class="btn btn-danger clear-all">Clear All</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal End -->
+    <script>
+        var queryString = window.location.href.split('?')[1];
+        var textAfterQuestionMark = queryString ? queryString.replace(/%20/g, ' ') : '';
+
+        if (textAfterQuestionMark) {
+            var packageTitles = document.getElementsByClassName('package-title');
+            for (var k = 0; k < packageTitles.length; k++) {
+                var packageTitle = packageTitles[k].textContent;
+                if (packageTitle.replace(/\s+/g, '-').toLowerCase() === textAfterQuestionMark.replace(/\s+/g, '-').toLowerCase()) {
+                    var mainDiv = packageTitles[k].parentNode;
+                    mainDiv.classList.add('flashing');
+                    mainDiv.scrollIntoView({ behavior: 'smooth' });
+                    setTimeout(() => {
+                        mainDiv.classList.remove('flashing');
+                    }, 5000);
+                }
+            }
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            if (window.location.href.indexOf("?click") > -1) {
+                var showCartButton = document.getElementById("show_cart");
+                showCartButton.click();
+            }
+        });
+        var clearCartBtn = document.querySelector('.clear-cart');
+
+        clearCartBtn.addEventListener('click', function () {
+            var confirmation = confirm('Are you sure you want to clear the cart?');
+
+            if (confirmation) {
+                localStorage.removeItem('selectedProducts');
+                location.reload();
+            }
+        });
+        var buyButtons = document.querySelectorAll('.buy-product-btn');
+        var selectedProducts = []; // Array to store selected products
+        // Retrieve the stored data from localStorage
+        var storedData = localStorage.getItem('selectedProducts');
+
+        // Check if storedData exists
+        if (storedData) {
+            // Convert the stored JSON string back into an array
+            selectedProducts = JSON.parse(storedData);
+            for (var i = 0; i < selectedProducts.length; i++) {
+                var title = selectedProducts[i].title;
+                var quantity = selectedProducts[i].quantity;
+                var price = selectedProducts[i].price;
+
+                var packageTitles = document.getElementsByClassName('package-title');
+                for (var k = 0; k < packageTitles.length; k++) {
+                    var packageTitle = packageTitles[k].textContent;
+                    if (packageTitle.replace(/\s+/g, '-').toLowerCase() === title.replace(/\s+/g, '-').toLowerCase()) {
+                        var parentDiv = packageTitles[k].closest('.package-item');
+                        var buyButton = parentDiv.querySelector('.buy-product-btn');
+
+                        var inputWrapper = document.createElement('span');
+                        inputWrapper.classList.add('input-wrapper');
+                        inputWrapper.setAttribute('data-title', packageTitle.replace(/\s+/g, '-').toLowerCase());
+                        inputWrapper.innerHTML = `
+                            <span class="input-number-decrement">–</span>
+                            <input class="input-number" type="text" value="${quantity}" min="0" max="10">
+                            <span class="input-number-increment">+</span>
+                            `;
+
+                        buyButton.parentNode.insertBefore(inputWrapper, buyButton.nextSibling);
+
+                        if (quantity === 0) {
+                            buyButton.innerHTML = 'Add to Cart';
+                        } else if (quantity >= 2) {
+                            buyButton.innerHTML = 'Selected ' + quantity + ' Times';
+                        } else {
+                            buyButton.innerHTML = 'Selected 1 Time';
+                        }
+                    }
+                }
+            }
+        }
+        buyButtons.forEach(function (button) {
+            button.addEventListener('click', function (event) {
+                var packageItem = event.target.closest('.package-item');
+                var packageTitle = packageItem.querySelector('.package-title').innerText;
+                var packagePrice = packageItem.querySelector('.package-price').innerText;
+                var priceWithoutSymbol = packagePrice.replace('$', '').replace(',', '');
+                var priceInt = parseInt(priceWithoutSymbol);
+                button.textContent = (button.textContent === 'Add to Cart') ? 'Selected 1 Time' : button.textContent;
+                // Check if an input wrapper already exists
+                if (!packageItem.querySelector('.input-wrapper')) {
+                    var inputWrapper = document.createElement('span');
+                    inputWrapper.classList.add('input-wrapper');
+                    inputWrapper.setAttribute('data-title', packageTitle.replace(/\s+/g, '-').toLowerCase());
+                    inputWrapper.innerHTML = `
+                <span class="input-number-decrement">–</span><input class="input-number" type="text" value="1" min="0" max="10"><span class="input-number-increment">+</span>
+            `;
+
+                    var inputNumberElement = inputWrapper.querySelector('.input-number');
+                    var decrementButton = inputWrapper.querySelector('.input-number-decrement');
+                    var incrementButton = inputWrapper.querySelector('.input-number-increment');
+
+                    inputNumberElement.addEventListener('input', function () {
+                        var value = parseInt(inputNumberElement.value);
+
+                        if (value === 0) {
+                            button.innerHTML = 'Add to Cart';
+                            inputWrapper.parentNode.removeChild(inputWrapper); // Remove the input wrapper
+                            removeSelectedProduct(packageTitle);
+                        } else if (value >= 2) {
+                            button.innerHTML = 'Selected ' + value + ' Times';
+                            updateSelectedProduct(packageTitle, value, priceInt);
+                        } else {
+                            button.innerHTML = 'Selected 1 Time';
+                            updateSelectedProduct(packageTitle, 1, priceInt);
+                        }
+                    });
+
+                    decrementButton.addEventListener('click', function () {
+                        var value = parseInt(inputNumberElement.value);
+                        value--;
+
+                        if (value < 0) {
+                            value = 0;
+                        }
+
+                        inputNumberElement.value = value;
+                        inputNumberElement.dispatchEvent(new Event('input'));
+                    });
+
+                    incrementButton.addEventListener('click', function () {
+                        var value = parseInt(inputNumberElement.value);
+                        value++;
+
+                        if (value > 10) {
+                            toastbar("Max. 10 orders", 'red')
+                            value = 10;
+                        }
+
+                        inputNumberElement.value = value;
+                        inputNumberElement.dispatchEvent(new Event('input'));
+                    });
+
+                    // Append the input wrapper after the button
+                    event.target.parentNode.insertBefore(inputWrapper, event.target.nextSibling);
+
+                    // Initialize inputNumber functionality for the newly added input
+                    inputNumber(inputNumberElement);
+                    addSelectedProduct(packageTitle, 1, priceInt);
+                }
+            });
+        });
+        function inputNumber(el) {
+            var min = el.getAttribute('min') || false;
+            var max = el.getAttribute('max') || false;
+
+            var els = {};
+            els.dec = el.previousElementSibling;
+            els.inc = el.nextElementSibling;
+
+            el.addEventListener('input', function () {
+                var value = parseInt(this.value);
+
+                if (isNaN(value)) {
+                    this.value = min || 0;
+                }
+
+                if (min && value < min) {
+                    this.value = min;
+                }
+
+                if (max && value > max) {
+                    this.value = max;
+                }
+            });
+        }
+
+        var staticBackdrop = document.getElementById('show_cart');
+        var table = document.querySelector('.show-cart.table');
+        var totalCart = document.querySelector('.total-cart');
+
+        staticBackdrop.addEventListener('click', function () {
+            // Clear the table
+            table.innerHTML = '';
+            var row = document.createElement('tr');
+            row.innerHTML = `
+                            <td>Order</td>
+                            <td>Package Title</td>
+                            <td>Price</td>
+                            <td>Change Quantity</td>
+                            <td>Action</td>
+                        `;
+            table.appendChild(row);
+            if (selectedProducts.length === 0) {
+                var noDataMessage = document.createElement('tr');
+                noDataMessage.innerHTML = '<td colspan="5"class="text-center text-danger font-weight-bolder">No data</td>';
+                table.appendChild(noDataMessage);
+                return
+            }
+            // Loop through the selected products array
+            for (var i = 0; i < selectedProducts.length; i++) {
+                var product = selectedProducts[i];
+                var title = product.title;
+                var quantity = product.quantity;
+                var price = product.price;
+
+                // Create table row
+                var row = document.createElement('tr');
+                row.innerHTML = `
+                            <td>${i + 1}</td>
+                            <td>${title}</td>
+                            <td>HK$ ${price}</td>
+                            <td>
+                                <input class="form-control" type="number" value="${quantity}" min="0" max="10">
+                            </td>
+                            <td>
+                                <button class="remove-product-btn btn-danger" data-title="${title}">Remove</button>
+                            </td>
+                        `;
+
+                // Add event listener to quantity input
+                var quantityInput = row.querySelector('.form-control');
+                quantityInput.addEventListener('input', function () {
+                    var newQuantity = parseInt(this.value);
+                    var title = this.parentNode.parentNode.children[1].innerText;
+                    if (parseInt(this.value) >= 10) {
+                        toastbar("Max. 10 orders", 'red')
+                        this.value = 10;
+                        newQuantity = parseInt(this.value);
+                    }
+                    if (parseInt(this.value) == 0) {
+                        this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+                    }
+                    updateSelectedProduct(title, newQuantity);
+                    calculateTotalPrice();
+                });
+
+                // Add event listener to remove button
+                var removeButton = row.querySelector('.remove-product-btn');
+                removeButton.addEventListener('click', function () {
+                    var title = this.getAttribute('data-title');
+                    updateSelectedProduct(title, 0);
+                    removeSelectedProduct(title);
+                    calculateTotalPrice();
+                    this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+                });
+
+                // Append the row to the table
+                table.appendChild(row);
+            }
+
+            // Calculate and display the total price
+            calculateTotalPrice();
+        });
+
+        function calculateTotalPrice() {
+            var totalPrice = 0;
+
+            for (var i = 0; i < selectedProducts.length; i++) {
+                var product = selectedProducts[i];
+                var title = product.title;
+                var quantity = product.quantity || 0;
+                var price = product.price || 0; // Assuming you have a function to get the price based on the title
+
+                totalPrice += price * quantity;
+            }
+
+            totalCart.innerText = totalPrice;
+        }
+
+        function addSelectedProduct(title, quantity, priceInt) {
+            var selectedProduct = {
+                title: title,
+                quantity: quantity,
+                price: priceInt
+            };
+            selectedProducts.push(selectedProduct);
+        }
+
+        function removeSelectedProduct(title) {
+            selectedProducts = selectedProducts.filter(function (product) {
+                return product.title !== title;
+            });
+        }
+
+        function updateSelectedProduct(title, quantity, priceInt) {
+            var selectedProduct = selectedProducts.find(function (product) {
+                return product.title === title;
+            });
+
+            if (selectedProduct) {
+                selectedProduct.quantity = quantity;
+                selectedProduct.price = priceInt * quantity;
+
+                // Get the inputWrapper based on the title
+                var inputWrapper = document.querySelector(`.input-wrapper[data-title="${title.replace(/\s+/g, '-').toLowerCase()}"]`);
+
+                var button = inputWrapper.previousElementSibling;
+
+                // If the button element has a different class, you can use querySelector to find the specific button
+                if (!button.classList.contains('buy-product-btn')) {
+                    button = inputWrapper.querySelector('.buy-product-btn');
+                }
+                var valueElement = inputWrapper.querySelector('.input-number');
+
+                if (quantity === 0) {
+                    button.innerHTML = 'Add to Cart';
+                    inputWrapper.parentNode.removeChild(inputWrapper); // Remove the input wrapper
+                    removeSelectedProduct(title);
+                } else if (quantity >= 2) {
+                    button.innerHTML = 'Selected ' + quantity + ' Times';
+                    valueElement.value = quantity;
+                } else {
+                    button.innerHTML = 'Selected 1 Time';
+                    valueElement.value = '1';
+                }
+            }
+        }
+
+        var paymentBtn = document.getElementById('payment_btn');
+
+        paymentBtn.addEventListener('click', function () {
+            if (selectedProducts.length > 0) {
+                var email = getCookie('email');
+                var username = getCookie('username');
+
+                if (email || username) {
+                    localStorage.setItem('selectedProducts', JSON.stringify(selectedProducts));
+                    window.location.href = 'Payment.html';
+                } else {
+                    toastbar("You have to login first", "red")
+                    window.location.href = 'login.html';
+                }
+            } else {
+                toastbar("No items selected!", "red")
+            }
+        });
+
+        function getCookie(name) {
+            var cookieArr = document.cookie.split(';');
+            for (var i = 0; i < cookieArr.length; i++) {
+                var cookiePair = cookieArr[i].split('=');
+                if (name === cookiePair[0].trim()) {
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+            return null;
+        }
+    </script>
+    <!-- Footer Start -->
+    <div id="footer-container"></div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

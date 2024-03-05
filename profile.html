@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>UTRAVEL - Travel Tour Management Platform</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<style>
+    .profile .title {
+        font-size: 24px;
+        line-height: 28px;
+        font-weight: bold;
+        color: #374151;
+        padding: 20px 20px 20px 0px;
+        border-bottom: 1px solid #d7dbdf;
+    }
+
+    .form-group {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .textarea-group label,
+    .form-group label {
+        color: #374151;
+        font-size: 16px;
+        line-height: 19px;
+        margin-bottom: 10px;
+        margin-left: 5px;
+    }
+
+    .form-group [type],
+    .textarea-group textarea {
+        border: 1px solid #d2d6db;
+        border-radius: 6px;
+        padding: 15px;
+    }
+
+    .form-group [type]:hover,
+    .textarea-group textarea:hover {
+        border-color: #a8afb9;
+    }
+
+    .form-group [type]:focus,
+    .textarea-group textarea:focus {
+        border-color: var(--primary);
+    }
+
+    .textarea-group {
+        margin-top: 24px;
+    }
+
+    .textarea-group textarea {
+        resize: none;
+        width: 100%;
+        margin-top: 10px;
+        height: calc(100% - 59px);
+    }
+
+    .checkbox-group {
+        margin-top: 25px;
+    }
+
+    .checkbox-group label {
+        display: flex;
+    }
+
+    .checkbox-group label::before {
+        content: "\0020";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+        border: 1px solid #d2d6db;
+        border-radius: 6px;
+        transition: background 0.1s ease-in;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+        /* ici on ne doit pas mettre de display: none afin de pouvoir "tabber" */
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+    }
+
+    .checkbox-group input[type="checkbox"]:focus+label:before {
+        border-color: var(--primary);
+    }
+
+    .checkbox-group input[type="checkbox"]:checked+label:before {
+        color: #fff;
+        content: "\2713";
+        background: var(--primary);
+        border-color: var(--primary);
+    }
+
+    .button {
+        font-weight: bold;
+        line-height: 19px;
+        background: var(--primary);
+        border: none;
+        padding: 15px 25px;
+        border-radius: 6px;
+        color: white;
+        width: 100%;
+        margin-top: 24px;
+    }
+
+    .button:hover {
+        background: var(--primary);
+    }
+
+    .button:focus {
+        background: var(--primary);
+    }
+
+    @media screen and (min-width: 1024px) {
+
+        .checkboxes {
+            display: flex;
+        }
+
+        .checkboxes> :not(:first-child) {
+            margin-left: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-gap: 24px;
+            /* grid-template-columns: 1fr 1fr 1fr; */
+            grid-auto-rows: 1fr;
+        }
+
+        .email-group {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .phone-group {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .textarea-group {
+            grid-column: 3;
+            grid-row: span 2;
+            margin-right: 2rem;
+        }
+
+        .button-container {
+            text-align: right;
+        }
+
+        .button {
+            width: auto;
+        }
+    }
+
+    .profile-user-img {
+        width: 350px;
+        height: 300px;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+        border-radius: 50%;
+    }
+
+    .avatar-upload {
+        position: relative;
+        max-width: 205px;
+        margin: auto;
+    }
+
+    .avatar-upload .avatar-edit {
+        position: absolute;
+        right: 40px;
+        z-index: 1;
+        top: 90px;
+    }
+
+    .avatar-upload .avatar-edit input {
+        display: none;
+    }
+
+    .avatar-upload .avatar-edit input+label {
+        width: 34px;
+        height: 34px;
+        margin-bottom: 0;
+        border-radius: 100%;
+        background: #fff;
+        border: 1px solid #d2d6de;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+        cursor: pointer;
+        font-weight: normal;
+        transition: all 0.2s ease-in-out;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: -120px;
+        bottom: -250px;
+        color: var(--primary);
+    }
+
+    .avatar-upload .avatar-edit input+label:hover {
+        background: #f1f1f1;
+        border-color: #d6d6d6;
+    }
+
+    /* .avatar-upload .avatar-edit input+label:after {
+        content: "\f007";
+        font-family: "Font Awesome 5 Free";
+        color: #337ab7;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        text-align: center;
+        line-height: 34px;
+        margin: auto;
+        bottom: 0;
+    } */
+</style>
+
+<body>
+    <!-- Topbar Start -->
+    <div id="header-container"></div>
+    <!-- Topbar End -->
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Profile</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="/index.html">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">edit profile</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+    <!-- Edit Profile Section -->
+    <div class="container profile" style="display:block;margin:auto;">
+        <div class="container-fluid">
+
+            <h1 class="title">Edit Your Profile</h1>
+            <h6>You need to log in again after submitting changes</h6>
+
+            <div class="grid">
+                <div class="form-group a">
+                    <label for="name">Name</label>
+                    <input id="name" type="text">
+                </div>
+
+                <div class="form-group b">
+                    <label for="email">Email</label>
+                    <input id="email" type="email">
+                </div>
+
+                <div class="form-group email-group">
+                    <label for="psw">Password</label>
+                    <input id="psw" type="text">
+                </div>
+
+                <div class="form-group phone-group">
+                    <label for="phone">Mobile Number</label>
+                    <input id="phone" type="number">
+                </div>
+
+            </div>
+
+            <div class="checkboxes">
+
+                <div class="checkbox-group">
+                    <input id="newsletter" type="checkbox">
+                    <label for="newsletter">Receive our latest news?</label>
+                </div>
+
+            </div>
+
+            <div class="button-container">
+                <button class="button"id="submit_change_btn">Save Change</button>
+            </div>
+        </div>
+
+    </div>
+    <!-- Edit Profile Section End -->
+    <script>
+        /* document.getElementById("imageUpload").change(function (data) {
+
+            let imageFile = data.target.files[0];
+            let reader = new FileReader();
+            reader.readAsDataURL(imageFile);
+
+            reader.onload = function (evt) {
+                document.getElementById("imagePreview").attr('src', evt.target.result);
+                document.getElementById("imagePreview").style.display = "none";
+                document.getElementById("imagePreview").fadeIn(650);
+            }
+
+        }); */
+    </script>
+
+    <!-- Footer Start -->
+    <div id="footer-container"></div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

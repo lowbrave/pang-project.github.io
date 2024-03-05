@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>UTRAVEL - Travel Tour Management Platform</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<style>
+    .title-box>h1 {
+        font-size: 2.4rem;
+    }
+
+    .title-box>p {
+        margin-top: .5rem;
+        font-size: 1.2rem;
+        font-weight: 800;
+        letter-spacing: .03rem;
+    }
+
+    .product-box {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    img {
+        width: 8rem;
+    }
+
+    .info-box>h5 {
+        font-size: 1.3rem;
+    }
+
+    .info-box>p {
+        margin-top: 1rem;
+        font-size: 1.2rem;
+        background-color: #83bd46;
+        color: #fff;
+        width: fit-content;
+        padding: .3rem 1.1rem;
+        border-radius: 2rem;
+    }
+
+    .info-box>.amount-box {
+        margin-top: 2rem;
+        display: flex;
+        gap: .3rem;
+    }
+
+    .info-box>.amount-box>div {
+        width: 2.5rem;
+        border-radius: .3rem;
+        aspect-ratio: 1;
+        background-color: #e0f2f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.4rem;
+        color: #191a3cee;
+        cursor: pointer;
+    }
+
+    .amount {
+        width: 2.5rem;
+        border: 1px solid #d1d1d1;
+        outline: none;
+        border-radius: .3rem;
+        text-align: center;
+        color: #191a3c;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .img-box img {
+        height: 150px;
+        width: auto;
+    }
+
+    .cost-box {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .cost-box>div {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.3rem;
+    }
+
+    .cost-box>div:nth-of-type(1)>p:nth-of-type(2) {
+        font-weight: bold;
+    }
+
+    .cost-box>div:nth-of-type(2)>p:nth-of-type(2) {
+        font-weight: bold;
+    }
+
+    .cost-box>div:nth-of-type(3)>p {
+        font-weight: bold;
+    }
+
+    .cost-box>p {
+        color: #5381f8;
+        font-size: 1.1rem;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .applied {
+        position: absolute;
+        background-color: #191a3c;
+        border-radius: 5px 0 0 5px;
+        color: #fff;
+        padding: .5rem 1rem;
+        bottom: 9.6rem;
+        right: 0;
+        opacity: 0;
+        transition: all .3s linear;
+    }
+
+    .Checkout-btn {
+        position: relative;
+        margin-top: 0.5rem;
+        width: 90%;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--primary);
+        border: none;
+        color: #fff;
+        padding: 1rem 3rem;
+        font-size: 1.5rem;
+        border-radius: 2rem;
+        cursor: pointer;
+        transition: all .25s linear;
+        outline: none;
+    }
+
+    .Checkout-btn:hover {
+        background-color: #fff;
+        color: var(--dark);
+        box-shadow: inset 0 0 0 1px var(--primary), inset 10px 0 0 6px var(--primary);
+    }
+
+    #success_tic .page-body {
+        max-width: 300px;
+        background-color: #FFFFFF;
+        margin: 10% auto;
+    }
+
+    #success_tic .page-body .head {
+        text-align: center;
+    }
+
+    /* #success_tic .tic{
+  font-size:186px;
+} */
+    #success_tic .close {
+        opacity: 1;
+        position: absolute;
+        right: 0px;
+        font-size: 30px;
+        padding: 3px 15px;
+        margin-bottom: 10px;
+    }
+
+    #success_tic .checkmark-circle {
+        width: 150px;
+        height: 150px;
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .checkmark-circle .background {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: var(--primary);
+        position: absolute;
+    }
+
+    #success_tic .checkmark-circle .checkmark {
+        border-radius: 5px;
+    }
+
+    #success_tic .checkmark-circle .checkmark.draw:after {
+        -webkit-animation-delay: 300ms;
+        -moz-animation-delay: 300ms;
+        animation-delay: 300ms;
+        -webkit-animation-duration: 1s;
+        -moz-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-timing-function: ease;
+        -moz-animation-timing-function: ease;
+        animation-timing-function: ease;
+        -webkit-animation-name: checkmark;
+        -moz-animation-name: checkmark;
+        animation-name: checkmark;
+        -webkit-transform: scaleX(-1) rotate(135deg);
+        -moz-transform: scaleX(-1) rotate(135deg);
+        -ms-transform: scaleX(-1) rotate(135deg);
+        -o-transform: scaleX(-1) rotate(135deg);
+        transform: scaleX(-1) rotate(135deg);
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+    }
+
+    #success_tic .checkmark-circle .checkmark:after {
+        opacity: 1;
+        height: 75px;
+        width: 37.5px;
+        -webkit-transform-origin: left top;
+        -moz-transform-origin: left top;
+        -ms-transform-origin: left top;
+        -o-transform-origin: left top;
+        transform-origin: left top;
+        border-right: 15px solid #fff;
+        border-top: 15px solid #fff;
+        border-radius: 2.5px !important;
+        content: '';
+        left: 35px;
+        top: 80px;
+        position: absolute;
+    }
+
+    @-webkit-keyframes checkmark {
+        0% {
+            height: 0;
+            width: 0;
+            opacity: 1;
+        }
+
+        20% {
+            height: 0;
+            width: 37.5px;
+            opacity: 1;
+        }
+
+        40% {
+            height: 75px;
+            width: 37.5px;
+            opacity: 1;
+        }
+
+        100% {
+            height: 75px;
+            width: 37.5px;
+            opacity: 1;
+        }
+    }
+
+    @-moz-keyframes checkmark {
+        0% {
+            height: 0;
+            width: 0;
+            opacity: 1;
+        }
+
+        20% {
+            height: 0;
+            width: 37.5px;
+            opacity: 1;
+        }
+
+        40% {
+            height: 75px;
+            width: 37.5px;
+            opacity: 1;
+        }
+
+        100% {
+            height: 75px;
+            width: 37.5px;
+            opacity: 1;
+        }
+    }
+
+    @keyframes checkmark {
+        0% {
+            height: 0;
+            width: 0;
+            opacity: 1;
+        }
+
+        20% {
+            height: 0;
+            width: 37.5px;
+            opacity: 1;
+        }
+
+        40% {
+            height: 75px;
+            width: 37.5px;
+            opacity: 1;
+        }
+
+        100% {
+            height: 75px;
+            width: 37.5px;
+            opacity: 1;
+        }
+    }
+</style>
+
+<body>
+        <!-- Topbar Start -->	
+    <div id="header-container"></div>
+	<!-- Topbar End -->
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Shopping Cart</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="/index.html">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Cart</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+    <!-- Shopping Cart Section -->
+    <div class="container-fluid booking mt-5 pb-5">
+        <div class="container p-5 bg-light shadow rounded">
+            <div class="title-box">
+                <h1>Your shopping cart</h1>
+                <p>ID: 548856</p>
+            </div>
+            <div class="product-box">
+                <div class="img-box">
+                    <img src="img/destination-2.jpg" alt="img">
+                </div>
+                <div class="info-box">
+                    <h5>Los Angeles Long Beach Tour</h5>
+                    <p class="stock">Available</p>
+                    <div class="amount-box">
+                        <div class="minus-box">
+                            <i class="fa-solid fa-minus"></i>
+                        </div>
+                        <input type="number" readonly value="1" min="0" max="10" class="amount" id="amount">
+                        <div class="plus-box">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="cost-box">
+                <div>
+                    <p>Standard Package</p>
+                    <p class="standard_package">4398</p>
+                </div>
+                <div>
+                    <p>Total Tax</p>
+                    <p class="tax">49</p>
+                </div>
+                <div>
+                    <p>Total</p>
+                    <p class="NOK">4447</p>
+                </div>
+            </div>
+            <button class="Checkout-btn" data-toggle="modal" data-target="#success_tic">Checkout</button>
+        </div>
+    </div>
+    <div id="success_tic" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <a class="close" href="#" data-dismiss="modal">&times;</a>
+                <div class="page-body">
+                    <div class="head">
+                        <h3 style="margin-top:5px;">You have successfully paid</h3>
+                        <h4>--</h4>
+                    </div>
+
+                    <h1 style="text-align:center;">
+                        <div class="checkmark-circle">
+                            <div class="background"></div>
+                            <div class="checkmark draw"></div>
+                        </div>
+                        <h1>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Shopping Cart Section End -->
+    <script>
+
+        const container = document.querySelector(".container");
+        const minus = document.querySelector(".minus-box");
+        const amount = document.getElementById("amount");
+        const plus = document.querySelector(".plus-box");
+        const stock = document.querySelector(".stock");
+        const checkoutBtn = document.querySelector(".gift");
+        const promoBox = document.querySelector(".promo-box");
+        const promoInput = document.getElementById("promo");
+        const sendPromoBtn = document.querySelector(".send-promo");
+        const promoApplied = document.querySelector(".applied");
+
+        //const vat = document.querySelector(".standard_package");
+        const standard = document.querySelector(".standard_package");
+        const tax = document.querySelector(".tax");
+        const nok = document.querySelector(".NOK");
+
+        let vatValueDefault = parseInt(standard.textContent);
+        let nokValueDefault = parseInt(tax.textContent);
+
+        let free = false;
+
+        plus.addEventListener("click", () => {
+            if (amount.value < 10) {
+                amount.value++;
+                if (amount.value !== 0 && free === false) {
+                    standard.innerHTML = `${vatValueDefault * amount.value}`;
+                    tax.innerHTML = `${nokValueDefault * amount.value}`;
+                    nok.innerHTML = `${nokValueDefault * amount.value + vatValueDefault * amount.value}`;
+                }
+            }
+            if (amount.value == 10) {
+                stock.style.backgroundColor = "#BE3144";
+                stock.innerHTML = "Maximum 10 orders per time";
+            }
+        })
+
+        minus.addEventListener("click", () => {
+            if (amount.value > 0) {
+                amount.value--;
+                if (amount.value !== 0 && free === false) {
+                    standard.innerHTML = `${vatValueDefault * amount.value}`;
+                    tax.innerHTML = `${nokValueDefault * amount.value}`;
+                    nok.innerHTML = `${nokValueDefault * amount.value + vatValueDefault * amount.value}`;
+                }
+            }
+            stock.style.backgroundColor = "#83bd46";
+            stock.innerHTML = "Available";
+        })
+
+        checkoutBtn.addEventListener("click", () => {
+            if (!promoInput.classList.contains("applied")) {
+                container.style.opacity = ".5";
+                container.style.pointerEvents = "none";
+                promoBox.style.opacity = "1";
+                promoBox.style.display = "flex";
+            }
+        })
+        sendPromoBtn.addEventListener("click", () => {
+            if (promoInput.value.length >= 1) {
+                container.style.opacity = "1";
+                container.style.pointerEvents = "auto";
+                promoBox.style.opacity = "0";
+                promoBox.style.display = "none";
+                promoInput.classList.add("applied");
+                promoApplied.style.opacity = "1";
+                promoApplied.style.display = "block"
+                vat.innerHTML = `It's free for you`;
+                nok.innerHTML = `It's free for you`;
+                free = true;
+            }
+        })
+    </script>
+
+  <!-- Footer Start -->	
+    <div id="footer-container"></div>
+	<!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
