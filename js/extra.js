@@ -181,7 +181,7 @@ if (bookformContainer) {
                 date2Input.value = storedData.date2;
 
                 // Fetch the "blog.json" file and process the results based on the search input
-                fetch('../package.html')
+                fetch('package.html')
                     .then(response => response.text())
                     .then(html => {
                         const parser = new DOMParser();
